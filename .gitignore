@@ -1,0 +1,13 @@
+.cache
+.classpath
+.project
+.settings/
+.target/
+lib/
+project/project/
+project/target/
+target/
+tags
+*~
+.DS_Store
+*.iml
