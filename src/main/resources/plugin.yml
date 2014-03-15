@@ -1,0 +1,10 @@
+name: sugoicraft
+main: io.github.akechi.sugoicraft.SugoiPlugin
+version: 1.0
+website: http://ujihisa.blogspot.com
+author: Tatsuhiro Ujihisa
+description: ask @ujm
+commands:
+  s:
+    description: everything about sugoicraft
+    usage: /s [subcommand]
