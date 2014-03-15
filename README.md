@@ -18,3 +18,11 @@ Modify your `run` script for craftbukkit like below.
     cd "$BINDIR"
     exec java -Xmx3072M -cp craftbukkit.jar:lib/scala-library.jar org.bukkit.craftbukkit.Main -o true
 
+## For developers
+
+* <http://jd.bukkit.org/dev/apidocs/>
+
+Q and A
+
+* Why not include `scala-library` in generated jar file but let `run` specify it?
+    * I did previously and it takes really long time every time to compile, with using `sbt-assembly`. Shorter compiliation time matters.
