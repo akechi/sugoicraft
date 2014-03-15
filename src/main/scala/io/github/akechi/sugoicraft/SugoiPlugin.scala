@@ -1,4 +1,4 @@
-package io.akechi.sugoicraft
+package io.github.akechi.sugoicraft
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.event.Listener
 
