@@ -12,6 +12,10 @@ class SugoiPlugin extends JavaPlugin with Listener {
   @EventHandler
   def onPlayerToggleSprint(evt: org.bukkit.event.player.PlayerToggleSprintEvent) {
     val player = evt.getPlayer
-    println(player, evt.isSprinting)
+    if (evt.isSprinting) {
+      player.setWalkSpeed(0.4)
+    } else {
+      player.setWalkSpeed(0.2)
+    }
   }
 }
