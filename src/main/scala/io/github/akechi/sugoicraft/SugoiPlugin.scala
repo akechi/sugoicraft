@@ -8,7 +8,7 @@ class SugoiPlugin extends JavaPlugin with Listener {
   override def onEnable() {
     println('cool)
     Bukkit.getPluginManager().registerEvents(this, this)
-    val blockEvents = new BlockEvents(this)
+    Bukkit.getPluginManager().registerEvents(new BlockEvents(), this)
   }
 
   val slowBlocks = Set(Material.SAND, Material.GRAVEL)

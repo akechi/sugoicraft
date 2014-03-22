@@ -6,8 +6,7 @@ import org.bukkit.Material
 import org.bukkit.GameMode
 import org.bukkit.inventory.ItemStack
 
-class BlockEvents(plugin:JavaPlugin) extends Listener {
-  Bukkit.getPluginManager().registerEvents(this, plugin)
+class BlockEvents extends Listener {
 
   val damageBlocks = Map(Material.GRASS->Material.GLASS,
                          Material.LEAVES->Material.MELON)
