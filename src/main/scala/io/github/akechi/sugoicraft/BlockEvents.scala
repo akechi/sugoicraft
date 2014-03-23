@@ -28,7 +28,7 @@ class FutureItem(val to: Material=Material.AIR,
     block.setData(0)
     block.getWorld.dropItemNaturally(
       block.getLocation,
-      ItemStack(this.to, 1, 0.toShort, this.dataTo))
+      new ItemStack(this.to, 1, 0.toShort, this.dataTo))
     return true
   }
 }
