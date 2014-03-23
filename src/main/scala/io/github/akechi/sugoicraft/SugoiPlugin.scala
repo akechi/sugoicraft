@@ -33,7 +33,8 @@ class SugoiPlugin extends JavaPlugin with Listener {
 
     // TODO
     {
-      val text = evt.getFormat().format(msg)
+      // TODO evt.getFormat() caused runtime error
+      val text = "%s: %s".format(msg)
       println('text, text)
       // curl -d 'room=mcujm&bot=sugoicraft&text=ujm%20logged%20out.&bot_verifier=bb5060f31bc6e89018c55ac72d39d5ca6aca75c9' "http://lingr.com/api/room/say"
       // http://www.bigbeeconsultants.co.uk/content/bee-client/simple-examples
