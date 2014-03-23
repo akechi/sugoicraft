@@ -9,10 +9,10 @@ import org.bukkit.inventory.ItemStack
 /**
  * Definition of future item generater qualification and result
  */
-class PendingItem(val to: Material=Material.AIR,
-  val by: Set[Material]=Set(),
-  val dataFrom: Byte=127,
-  val dataTo: Byte=0) {
+case class PendingItem(to: Material=Material.AIR,
+  by: Set[Material]=Set(),
+  dataFrom: Byte=127,
+  dataTo: Byte=0) {
 
   /** 
    * Drops future item if hand item and block matches future qualification.
@@ -29,7 +29,7 @@ class PendingItem(val to: Material=Material.AIR,
     block.getWorld.dropItemNaturally(
       block.getLocation,
       new ItemStack(this.to, 1, 0.toShort, this.dataTo))
-    return true
+    true
   }
 }
 
@@ -40,13 +40,13 @@ class BlockEvents extends Listener {
 
   /** definition for special brock break events. */
   val damageBlocks = Map(
-    Material.GRASS->new PendingItem(
+    Material.GRASS-> PendingItem(
       to=Material.GLASS,
       by=Set(Material.DIRT)),
-    Material.LEAVES->new PendingItem(
+    Material.LEAVES-> PendingItem(
       to=Material.MELON,
       by=Set(Material.DIRT)),
-    Material.SMOOTH_BRICK->new PendingItem(
+    Material.SMOOTH_BRICK-> PendingItem(
       to=Material.SMOOTH_BRICK,
       by=Set(Material.STONE_PICKAXE),
       dataFrom=0,
@@ -75,4 +75,3 @@ class BlockEvents extends Listener {
     }
   }
 }
-
