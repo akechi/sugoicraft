@@ -5,8 +5,10 @@ import org.bukkit.event.{Listener,EventHandler}
 import org.bukkit.Material
 
 class SugoiPlugin extends JavaPlugin with Listener {
+  private val log = this.getLogger()
+
   override def onEnable() {
-    println('cool)
+    log.info("onEnable")
     Bukkit.getPluginManager().registerEvents(this, this)
   }
 
