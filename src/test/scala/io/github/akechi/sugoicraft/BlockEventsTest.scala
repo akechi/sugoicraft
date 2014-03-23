@@ -22,7 +22,7 @@ class BlockEventsTest extends FunSpec {
           when(player.getGameMode).thenReturn(GameMode.SURVIVAL)
           val blockEvents = new BlockEvents()
           blockEvents.onBlockBreakEvent(evt)
-          assert(false === evt.isCancelled)
+          assert(!evt.isCancelled)
         }
       }
       describe("dropped items and event cancelled") {
@@ -47,7 +47,7 @@ class BlockEventsTest extends FunSpec {
             itemStackCaptor.capture)
           //assert(new ItemStack(Material.SMOOTH_BRICK, 1, 0.toShort, 2.toByte).isSimilar(itemStackCaptor.getValue))
           assert(Material.SMOOTH_BRICK === itemStackCaptor.getValue.getType)
-          assert(true === evt.isCancelled)
+          assert(evt.isCancelled)
         }
       }
     }
