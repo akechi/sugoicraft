@@ -7,7 +7,7 @@ import org.bukkit.block.Block
 import org.bukkit.inventory.ItemStack
 
 /**
- * Definition of future item generater qualification and result
+ * Definition of pending item generater qualification and result
  */
 case class PendingItem(
   to: Material,
@@ -16,7 +16,7 @@ case class PendingItem(
   dataTo: Byte = 0) {
 
   /** 
-   * Drops future item if hand item and block matches future qualification.
+   * Drops pending item if hand item and block matches pending qualification.
    */
   def drop(hand: Material, block: Block): Boolean = {
     if (this.dataFrom != 127 && this.dataFrom != block.getData) {
@@ -67,9 +67,9 @@ class BlockEvents extends Listener {
     val material = block.getType
     if (evt.getPlayer.getGameMode == GameMode.SURVIVAL) {
       if (damageBlocks.contains(material)) {
-        val future = damageBlocks(material)
+        val pending = damageBlocks(material)
         val hand = evt.getPlayer.getItemInHand.getType
-        if (future.drop(hand, block)) {
+        if (pending.drop(hand, block)) {
             evt.setCancelled(true)
           }
       }
