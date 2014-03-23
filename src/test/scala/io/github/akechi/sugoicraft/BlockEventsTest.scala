@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack
 class BlockEventsTest extends FunSpec {
   describe("BlockEventsTest") {
     describe("onBlockBreakEvent") {
-      describe("event does not cancelled") {
+      describe("event did not cancelled") {
         it ("if target block type does not matched.") {
           val block = mock(classOf[Block])
           val player = mock(classOf[Player])
@@ -25,7 +25,7 @@ class BlockEventsTest extends FunSpec {
           assert(false === evt.isCancelled)
         }
       }
-      describe("drop items and event cancelled") {
+      describe("dropped items and event cancelled") {
         it ("if target block type, data, and hand material matched") {
           val block = mock(classOf[Block])
           val blockLocation = mock(classOf[Location])
