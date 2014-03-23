@@ -9,7 +9,8 @@ import org.bukkit.inventory.ItemStack
 /**
  * Definition of future item generater qualification and result
  */
-case class PendingItem(to: Material = Material.AIR,
+case class PendingItem(
+  to: Material,
   by: Set[Material] = Set(),
   dataFrom: Byte = 127,
   dataTo: Byte = 0) {
@@ -41,13 +42,13 @@ class BlockEvents extends Listener {
   /** definition for special brock break events. */
   val damageBlocks = Map(
     Material.GRASS -> PendingItem(
-      to = Material.GLASS,
+      Material.GLASS,
       by = Set(Material.DIRT)),
     Material.LEAVES -> PendingItem(
-      to = Material.MELON,
+      Material.MELON,
       by = Set(Material.DIRT)),
     Material.SMOOTH_BRICK -> PendingItem(
-      to = Material.SMOOTH_BRICK,
+      Material.SMOOTH_BRICK,
       by = Set(Material.STONE_PICKAXE),
       dataFrom = 0,
       dataTo = 2))
