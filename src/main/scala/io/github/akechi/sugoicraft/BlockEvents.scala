@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack
 /**
  * Definition of future item generater qualification and result
  */
-class FutureItem(val to: Material=Material.AIR,
+class PendingItem(val to: Material=Material.AIR,
   val by: Set[Material]=Set(),
   val dataFrom: Byte=127,
   val dataTo: Byte=0) {
@@ -40,13 +40,13 @@ class BlockEvents extends Listener {
 
   /** definition for special brock break events. */
   val damageBlocks = Map(
-    Material.GRASS->new FutureItem(
+    Material.GRASS->new PendingItem(
       to=Material.GLASS,
       by=Set(Material.DIRT)),
-    Material.LEAVES->new FutureItem(
+    Material.LEAVES->new PendingItem(
       to=Material.MELON,
       by=Set(Material.DIRT)),
-    Material.SMOOTH_BRICK->new FutureItem(
+    Material.SMOOTH_BRICK->new PendingItem(
       to=Material.SMOOTH_BRICK,
       by=Set(Material.STONE_PICKAXE),
       dataFrom=0,
@@ -57,7 +57,7 @@ class BlockEvents extends Listener {
    *
    * if damageBlocks contains event.getBlock.getType:
    *
-   * * drops FutureItem if matched FutureItem qualification.
+   * * drops PendingItem if matched PendingItem qualification.
    * * Else drop default item. 
    */
   @EventHandler
