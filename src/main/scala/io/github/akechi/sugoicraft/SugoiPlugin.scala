@@ -25,4 +25,32 @@ class SugoiPlugin extends JavaPlugin with Listener {
       player.setWalkSpeed(0.2F)
     }
   }
+
+  @EventHandler
+  def onAsyncPlayerChatEvent(evt: org.bukkit.event.player.AsyncPlayerChatEvent) {
+    val player = evt.getPlayer()
+    val msg = evt.getMessage()
+
+    // TODO
+    {
+      val text = evt.getFormat().format(msg)
+      println('text, text)
+      // curl -d 'room=mcujm&bot=sugoicraft&text=ujm%20logged%20out.&bot_verifier=bb5060f31bc6e89018c55ac72d39d5ca6aca75c9' "http://lingr.com/api/room/say"
+      // http://www.bigbeeconsultants.co.uk/content/bee-client/simple-examples
+      // import uk.co.bigbeeconsultants.http._ // omg
+      import uk.co.bigbeeconsultants.http.HttpClient
+      import uk.co.bigbeeconsultants.http.request.RequestBody
+      val resp: String =
+        (new HttpClient).
+          post(
+            new java.net.URL("http://lingr.com/api/room/say"),
+            Some(RequestBody(Map(
+              "room" -> "mcujm",
+              "bot" -> "sugoicraft",
+              "text" -> "ujm%20logged%20out.",
+              "bot_verifier" -> "bb5060f31bc6e89018c55ac72d39d5ca6aca75c9")))).
+          body.asString
+      println('resp, resp)
+    }
+  }
 }
