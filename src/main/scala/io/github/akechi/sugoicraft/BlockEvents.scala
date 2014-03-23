@@ -9,15 +9,15 @@ import org.bukkit.inventory.ItemStack
 /**
  * Definition of future item generater qualification and result
  */
-class FutureItem(val to : Material=Material.AIR,
-                 val by : Set[Material]=Set(),
-                 val dataFrom : Byte=127,
-                 val dataTo : Byte=0) {
+class FutureItem(val to: Material=Material.AIR,
+                 val by: Set[Material]=Set(),
+                 val dataFrom: Byte=127,
+                 val dataTo: Byte=0) {
 
   /** 
    * Drops future item if hand item and block matches future qualification.
    */
-  def drop(hand:Material, block:Block) : Boolean = {
+  def drop(hand: Material, block: Block): Boolean = {
     if (this.dataFrom != 127 && this.dataFrom != block.getData) {
       return false
     }
