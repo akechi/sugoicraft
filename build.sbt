@@ -12,4 +12,5 @@ libraryDependencies ++= Seq(
   "org.bukkit" % "bukkit" % "1.7.2-R0.4-SNAPSHOT",
   "uk.co.bigbeeconsultants" %% "bee-client" % "0.21.+",
   "net.databinder.dispatch" %% "dispatch-core" % "0.11.0",
-  "org.scalatest" %% "scalatest" % "2.0" % "test")
+  "org.scalatest" %% "scalatest" % "2.0" % "test",
+  "org.mockito" % "mockito-core" % "1.9.5")
