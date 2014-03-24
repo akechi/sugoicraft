@@ -1,2 +1,2 @@
 #!/bin/bash -xe
-sbt -no-colors test package
+sbt test package
