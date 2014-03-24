@@ -1,3 +1,8 @@
 #!/bin/bash -xe
+export JAVA_OPTS='-Dsbt.log.noformat=true'
+
+# for me
+which sbt
+
 sbt test
 sbt package
