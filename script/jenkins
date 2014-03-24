@@ -1,9 +1,2 @@
 #!/bin/bash -xe
-export JAVA_OPTS='-Dsbt.log.noformat=true'
-
-# for me
-cat /usr/sbin/sbt
-echo '--------------------------'
-
-sbt test
-sbt package
+sbt -no-colors test package
