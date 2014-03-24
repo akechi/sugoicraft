@@ -2,7 +2,8 @@
 export JAVA_OPTS='-Dsbt.log.noformat=true'
 
 # for me
-which sbt
+cat /usr/sbin/sbt
+echo '--------------------------'
 
 sbt test
 sbt package
