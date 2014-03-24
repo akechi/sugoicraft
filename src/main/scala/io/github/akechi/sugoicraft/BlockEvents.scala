@@ -13,7 +13,7 @@ case class PendingItem(
   to: Material,
   by: Set[Material] = Set(),
   dataFrom: Byte = 127,
-  dataTo: Byte = 0, {
+  dataTo: Byte = 0) {
 
   /** 
    * Drops pending item if hand item and block matches pending qualification.
