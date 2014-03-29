@@ -11,6 +11,7 @@ class SugoiPlugin extends JavaPlugin with Listener {
     log.info("onEnable")
     Bukkit.getPluginManager().registerEvents(this, this)
     Bukkit.getPluginManager().registerEvents(new BlockEvents(), this)
+    Bukkit.getPluginManager().registerEvents(new Magic(), this)
   }
 
   val slowBlocks = Set(Material.SAND, Material.GRAVEL)
