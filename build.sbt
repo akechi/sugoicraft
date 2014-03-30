@@ -16,3 +16,7 @@ libraryDependencies ++= Seq(
   "net.databinder.dispatch" %% "dispatch-core" % "0.11.0",
   "org.scalatest" %% "scalatest" % "2.0" % "test",
   "org.mockito" % "mockito-core" % "1.9.5")
+
+assemblySettings
+
+assemblyOption in assembly ~= { _.copy(includeScala = false) }

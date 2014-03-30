@@ -1,2 +1,2 @@
 #!/bin/bash -xe
-sbt test package
+sbt test assembly
