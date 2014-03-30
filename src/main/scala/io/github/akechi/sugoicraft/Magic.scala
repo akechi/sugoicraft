@@ -10,7 +10,7 @@ import org.bukkit.entity.{Player, Projectile}
 
 
 object Paranormal {
-  class Base(entity: Projectile) {
+  abstract class Base(entity: Projectile) {
     def getEntity(): Projectile = {
       return this.entity
     }
