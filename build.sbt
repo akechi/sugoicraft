@@ -1,3 +1,5 @@
+import AssemblyKeys._
+
 name := "sugoicraft"
 
 version := "1.0"
