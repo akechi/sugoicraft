@@ -17,7 +17,7 @@ object Paranormal {
   class Fire(entity: Projectile) extends Base(entity) {
     override def hit(evt: org.bukkit.event.entity.ProjectileHitEvent) {
       val near = this.entity.getNearbyEntities(6.0, 6.0, 6.0)
-      for(i <- near) {
+      for (i <- near) {
         println(i)
         i.setFireTicks(120)
       }
@@ -40,9 +40,10 @@ class Magic extends Listener {
   /** effect in world. */
   val liveeffects = new ListBuffer[Paranormal.Base]()
 
-  val dict: Map[Material, (Class[_ <: Projectile], Class[_ <: Paranormal.Base])] = Map(
-    Material.LAVA_BUCKET -> (classOf[org.bukkit.entity.Egg], classOf[Paranormal.Fire]),
-    Material.TNT-> (classOf[org.bukkit.entity.Egg], classOf[Paranormal.Destruction]))
+  val dict: Map[Material, (Class[_ <: Projectile], Class[_ <: Paranormal.Base])] =
+    Map(
+      Material.LAVA_BUCKET -> (classOf[org.bukkit.entity.Egg], classOf[Paranormal.Fire]),
+      Material.TNT-> (classOf[org.bukkit.entity.Egg], classOf[Paranormal.Destruction]))
 
   /**
    * create new effect by player.
@@ -64,9 +65,7 @@ class Magic extends Listener {
         val e = this.dict(evt.getItem.getType)
         val (style, effect) = e
         this.effect(
-          evt.getPlayer,
-          style,
-          effect)
+          evt.getPlayer, style, effect)
         evt.setCancelled(true)
       }
     }
@@ -86,5 +85,3 @@ class Magic extends Listener {
     }
   }
 }
-
-
