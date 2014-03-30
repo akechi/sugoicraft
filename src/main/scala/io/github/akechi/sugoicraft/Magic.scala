@@ -11,8 +11,7 @@ import org.bukkit.entity.{Player, Projectile}
 
 object Paranormal {
   abstract class Base(val entity: Projectile) {
-    def hit(evt: org.bukkit.event.entity.ProjectileHitEvent) {
-    }
+    def hit(evt: org.bukkit.event.entity.ProjectileHitEvent)
   }
 
   class Fire(entity: Projectile) extends Base(entity) {
