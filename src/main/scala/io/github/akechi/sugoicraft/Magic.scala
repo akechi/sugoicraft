@@ -1,6 +1,5 @@
 package io.github.akechi.sugoicraft
-import scala.collection.mutable.ListBuffer
-import scala.collection.JavaConversions._
+import scala.collection.JavaConversions.collectionAsScalaIterable
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.event.{Listener,EventHandler}
@@ -16,6 +15,7 @@ object Paranormal {
 
   class Fire(entity: Projectile) extends Base(entity) {
     override def hit(evt: org.bukkit.event.entity.ProjectileHitEvent) {
+      // TODO meiraka: all entities including items? - ujihisa
       val near = this.entity.getNearbyEntities(6.0, 6.0, 6.0)
       for (i <- near) {
         println(i)
@@ -38,7 +38,7 @@ object Paranormal {
 class Magic extends Listener {
 
   /** effect in world. */
-  val liveeffects = new ListBuffer[Paranormal.Base]()
+  var liveeffects = Set[Paranormal.Base]()
 
   val dict: Map[Material, (Class[_ <: Projectile], Class[_ <: Paranormal.Base])] =
     Map(
@@ -76,10 +76,10 @@ class Magic extends Listener {
    */
   @EventHandler
   def onProjectileHitEvent(evt: org.bukkit.event.entity.ProjectileHitEvent) {
-    for (i <- 0 until this.liveeffects.length) {
-      if (this.liveeffects(i).entity == evt.getEntity) {
-        this.liveeffects(i).hit(evt)
-        this.liveeffects.remove(i)
+    for (liveeffect <- this.liveeffects) {
+      if (liveeffect.entity == evt.getEntity) {
+        liveeffect.hit(evt)
+        this.liveeffects -= liveeffect
         return
       }
     }
