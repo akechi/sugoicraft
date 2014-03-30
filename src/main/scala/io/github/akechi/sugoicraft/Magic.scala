@@ -27,7 +27,7 @@ object Paranormal {
   class Destruction(entity: Projectile) extends Base(entity) {
     override def hit(evt: org.bukkit.event.entity.ProjectileHitEvent) {
       val loc = this.entity.getLocation
-      this.entity.getWorld.createExplosion(loc.getX, loc.getY, loc.getZ, 2, false, true)
+      this.entity.getWorld.createExplosion(loc.getX, loc.getY, loc.getZ, 2, false, false)
     }
   }
 }
