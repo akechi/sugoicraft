@@ -10,10 +10,7 @@ import org.bukkit.entity.{Player, Projectile}
 
 
 object Paranormal {
-  abstract class Base(entity: Projectile) {
-    def getEntity(): Projectile = {
-      return this.entity
-    }
+  abstract class Base(val entity: Projectile) {
     def hit(evt: org.bukkit.event.entity.ProjectileHitEvent) {
     }
   }
@@ -82,7 +79,7 @@ class Magic extends Listener {
   @EventHandler
   def onProjectileHitEvent(evt: org.bukkit.event.entity.ProjectileHitEvent) {
     for (i <- 0 until this.liveeffects.length) {
-      if (this.liveeffects(i).getEntity == evt.getEntity) {
+      if (this.liveeffects(i).entity == evt.getEntity) {
         this.liveeffects(i).hit(evt)
         this.liveeffects.remove(i)
         return
