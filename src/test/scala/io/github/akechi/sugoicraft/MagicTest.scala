@@ -14,7 +14,7 @@ class ParanormalForTest(entity: Projectile) extends Paranormal.Base(entity) {
 
 class MagicForTest extends Magic {
   override val dict = 
-    Map(Material.TNT -> (classOf[Egg], classOf[ParanormalForTest]))
+    Map(Material.TNT -> (10, classOf[Egg], classOf[ParanormalForTest]))
 }
 
 class MagicTest extends FunSpec {
