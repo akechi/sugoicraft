@@ -41,7 +41,7 @@ class Magic extends Listener {
   var liveeffects = Set[Paranormal.Base]()
 
   /** player magicka value and timestamp */
-  var magicka = Map[Player, (Int, Long)]()
+  var magicka = Map[String, (Int, Long)]()
 
   val magicka_max = 100
 
@@ -64,10 +64,10 @@ class Magic extends Listener {
    * Get current magicka value.
    */
   def getMagicka(player: Player): Int = {
-    if (!this.magicka.contains(player)) {
+    if (!this.magicka.contains(player.getName)) {
       return this.magicka_max
     } else {
-      val (old_magicka, old_timestamp) = this.magicka(player)
+      val (old_magicka, old_timestamp) = this.magicka(player.getName)
       val new_magicka = old_magicka + (System.currentTimeMillis / 1000 - old_timestamp).toInt
       if (new_magicka > this.magicka_max) {
         return this.magicka_max
@@ -83,7 +83,7 @@ class Magic extends Listener {
     val current = System.currentTimeMillis / 1000
     val old_magicka = this.getMagicka(player)
     val new_magicka = old_magicka - magicka
-    this.magicka = this.magicka.updated(player, (new_magicka, current))
+    this.magicka = this.magicka.updated(player.getName, (new_magicka, current))
   }
 
   /**
