@@ -13,19 +13,17 @@ class SuperJump extends Listener {
   /** name, (count, timestamp) */
   var crouching_counter: Map[String, (Int, Long)] = Map()
   
-  /** crouching_counter reset interval */
-  val interval =  2l
-
   def getCrouchingCounter(player: Player) : Int = {
     if (!this.crouching_counter.contains(player.getName)) {
       return 0
     } else {
       val current_time = System.currentTimeMillis / 1000
       val (count, old_time) = this.crouching_counter(player.getName)
-      if (current_time - old_time > this.interval) {
+      val new_count = count - (current_time - old_time).toInt
+      if (new_count < 0) {
         return 0
       } else {
-        return count
+        return new_count
       }
     }
   }
@@ -43,7 +41,7 @@ class SuperJump extends Listener {
     val player = evt.getPlayer
     if (player.isSneaking) {
       this.incrementCrouchingCounter(player)
-      if (this.getCrouchingCounter(player) > 5) {
+      if (this.getCrouchingCounter(player) == 4) {
         player.playSound(
           player.getLocation,
           Sound.BAT_TAKEOFF,
