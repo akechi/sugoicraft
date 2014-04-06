@@ -19,6 +19,25 @@ class MagicForTest extends Magic {
 
 class MagicTest extends FunSpec {
   describe("MagicTest") {
+    describe("getMagicka returns") {
+      it("max if first use") {
+        val player = mock(classOf[Player])
+        val magic = new MagicForTest()
+        assert(magic.magicka_max == magic.getMagicka(player))
+      }
+      it("max if pass long time since previous") {
+        val player = mock(classOf[Player])
+        val magic = new MagicForTest()
+        magic.magicka = magic.magicka.updated(player, (0, 0l))
+        assert(magic.magicka_max == magic.getMagicka(player))
+      }
+      it("max - 50 if decrement 50 shortly") {
+        val player = mock(classOf[Player])
+        val magic = new MagicForTest()
+        magic.decrementMagicka(player, 50)
+        assert(magic.magicka_max - 50 == magic.getMagicka(player))
+      }
+    }
     describe("onProjectileHitEvent") {
       describe("no special events when") {
         it("no liveeffects") {
