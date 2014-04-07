@@ -24,21 +24,21 @@ class MagicTest extends FunSpec {
         val player = mock(classOf[Player])
         when(player.getName).thenReturn("player")
         val magic = new MagicForTest()
-        assert(magic.magicka_max == magic.getMagicka(player))
+        assert(magic.maxMagicka == magic.getMagicka(player))
       }
       it("max if pass long time since previous") {
         val player = mock(classOf[Player])
         when(player.getName).thenReturn("player")
         val magic = new MagicForTest()
         magic.magicka = magic.magicka.updated("player", (0, 0l))
-        assert(magic.magicka_max == magic.getMagicka(player))
+        assert(magic.maxMagicka == magic.getMagicka(player))
       }
       it("max - 50 if decrement 50 shortly") {
         val player = mock(classOf[Player])
         when(player.getName).thenReturn("player")
         val magic = new MagicForTest()
         magic.decrementMagicka(player, 50)
-        assert(magic.magicka_max - 50 == magic.getMagicka(player))
+        assert(magic.maxMagicka - 50 == magic.getMagicka(player))
       }
     }
     describe("onProjectileHitEvent") {

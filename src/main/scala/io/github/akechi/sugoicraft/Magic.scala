@@ -43,7 +43,7 @@ class Magic extends Listener {
   /** player magicka value and timestamp */
   var magicka = Map[String, (Int, Long)]()
 
-  val magicka_max = 100
+  val maxMagicka = 100
 
   val dict: Map[Material, (Int, Class[_ <: Projectile], Class[_ <: Paranormal.Base])] =
     Map(
@@ -65,12 +65,12 @@ class Magic extends Listener {
    */
   def getMagicka(player: Player): Int = {
     if (!this.magicka.contains(player.getName)) {
-      return this.magicka_max
+      return this.maxMagicka
     } else {
       val (old_magicka, old_timestamp) = this.magicka(player.getName)
       val new_magicka = old_magicka + (System.currentTimeMillis / 1000 - old_timestamp).toInt
-      if (new_magicka > this.magicka_max) {
-        return this.magicka_max
+      if (new_magicka > this.maxMagicka) {
+        return this.maxMagicka
       }
       return new_magicka
     }
@@ -102,7 +102,7 @@ class Magic extends Listener {
           this.decrementMagicka(player, cost)
         } else {
           player.playSound(player.getLocation, Sound.ENDERMAN_TELEPORT, (50.0).toFloat, (2.0).toFloat)
-          player.sendMessage("low magicka [%d/%d]".format(current_magicka, this.magicka_max))
+          player.sendMessage("low magicka [%d/%d]".format(current_magicka, this.maxMagicka))
         }
         evt.setCancelled(true)
       }
