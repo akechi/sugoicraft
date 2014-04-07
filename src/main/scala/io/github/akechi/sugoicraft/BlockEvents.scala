@@ -38,7 +38,6 @@ case class PendingItem(
  * Called when a block event fired.
  */
 class BlockEvents extends Listener {
-
   /** definition for special brock break events. */
   val damageBlocks = Map(
     Material.GRASS -> PendingItem(
@@ -70,8 +69,8 @@ class BlockEvents extends Listener {
         val pending = damageBlocks(material)
         val hand = evt.getPlayer.getItemInHand.getType
         if (pending.drop(hand, block)) {
-            evt.setCancelled(true)
-          }
+          evt.setCancelled(true)
+        }
       }
     }
   }
