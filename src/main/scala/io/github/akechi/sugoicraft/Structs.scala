@@ -66,8 +66,10 @@ object Structs {
       val (mat, data) = blockdata
       val replace_loc = new Location(world, loc.getX + x, loc.getY + y, loc.getZ + z)
       val block = world.getBlockAt(replace_loc)
-      block.setType(mat)
-      block.setData(data)
+      if (block.getType != Material.BED_BLOCK) {
+        block.setType(mat)
+        block.setData(data)
+      }
     }
   }
 }
