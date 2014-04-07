@@ -92,19 +92,20 @@ class Magic extends Listener {
   @EventHandler
   def onPlayerInteractEvent(evt: org.bukkit.event.player.PlayerInteractEvent) {
     if (!evt.hasBlock && evt.hasItem) {
-      if (this.dict.contains(evt.getItem.getType)) {
-        val player = evt.getPlayer
-        val e = this.dict(evt.getItem.getType)
-        val (cost, style, effect) = e
-        val current_magicka = this.getMagicka(player)
-        if (current_magicka >= cost) {
-          this.effect(player, style, effect)
-          this.decrementMagicka(player, cost)
-        } else {
-          player.playSound(player.getLocation, Sound.ENDERMAN_TELEPORT, (50.0).toFloat, (2.0).toFloat)
-          player.sendMessage("low magicka [%d/%d]".format(current_magicka, this.maxMagicka))
-        }
-        evt.setCancelled(true)
+      val e = this.dict.get(evt.getItem.getType)
+      e match {
+        case Some((cost, style, effect)) =>
+          val player = evt.getPlayer
+          val current_magicka = this.getMagicka(player)
+          if (current_magicka >= cost) {
+            this.effect(player, style, effect)
+            this.decrementMagicka(player, cost)
+          } else {
+            player.playSound(player.getLocation, Sound.ENDERMAN_TELEPORT, (50.0).toFloat, (2.0).toFloat)
+            player.sendMessage("low magicka [%d/%d]".format(current_magicka, this.maxMagicka))
+          }
+          evt.setCancelled(true)
+        case _ =>
       }
     }
   }
