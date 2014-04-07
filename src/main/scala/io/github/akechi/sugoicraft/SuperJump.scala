@@ -9,11 +9,12 @@ import org.bukkit.event.{Listener,EventHandler}
  * SuperJump with sneak
  */
 class SuperJump extends Listener {
-  
   /** name, (count, timestamp) */
+   // meiraka TODO: use scala naming convention
   var crouching_counter: Map[String, (Int, Long)] = Map()
   
   def getCrouchingCounter(player: Player) : Int = {
+    // meiraka TODO: use get() and pattern matching, or getOrElse()
     if (!this.crouching_counter.contains(player.getName)) {
       return 0
     } else {
@@ -53,5 +54,3 @@ class SuperJump extends Listener {
     }
   }
 }
-
-
