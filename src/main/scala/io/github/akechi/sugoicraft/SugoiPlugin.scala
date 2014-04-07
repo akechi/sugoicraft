@@ -9,10 +9,11 @@ class SugoiPlugin extends JavaPlugin with Listener {
 
   override def onEnable() {
     log.info("onEnable")
-    Bukkit.getPluginManager().registerEvents(this, this)
-    Bukkit.getPluginManager().registerEvents(new BlockEvents(), this)
-    Bukkit.getPluginManager().registerEvents(new Magic(), this)
-    Bukkit.getPluginManager().registerEvents(new SuperJump(), this)
+    val pm = Bukkit.getPluginManager()
+    pm.registerEvents(this, this)
+    pm.registerEvents(new BlockEvents(), this)
+    pm.registerEvents(new Magic(), this)
+    pm.registerEvents(new SuperJump(), this)
   }
 
   val slowBlocks = Set(Material.SAND, Material.GRAVEL)
@@ -36,7 +37,7 @@ class SugoiPlugin extends JavaPlugin with Listener {
     // TODO
     {
       // TODO evt.getFormat() caused runtime error
-      log.info("format: evt.getFormat()")
+      log.info("format: ${evt.getFormat()}")
       val text = "%s: %s".format(player.getName, msg)
       println('text, text)
       // curl -d 'room=mcujm&bot=sugoicraft&text=ujm%20logged%20out.&bot_verifier=bb5060f31bc6e89018c55ac72d39d5ca6aca75c9' "http://lingr.com/api/room/say"
