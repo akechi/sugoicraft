@@ -13,19 +13,18 @@ class SuperJump extends Listener {
   var crouchingCounter: Map[String, (Int, Long)] = Map()
   
   def getCrouchingCounter(player: Player) : Int = {
-    // meiraka TODO: use get() and pattern matching, or getOrElse()
-    
-    if (!this.crouchingCounter.contains(player.getName)) {
-      return 0
-    } else {
-      val current_time = System.currentTimeMillis / 1000
-      val (count, old_time) = this.crouchingCounter(player.getName)
-      val new_count = count - (current_time - old_time).toInt
-      if (new_count < 0) {
+    val c = this.crouchingCounter.get(player.getName)
+    c match {
+      case Some((count, old_time)) =>
+        val current_time = System.currentTimeMillis / 1000
+        val new_count = count - (current_time - old_time).toInt
+        if (new_count < 0) {
+          return 0
+        } else {
+          return new_count
+        }
+      case _ =>
         return 0
-      } else {
-        return new_count
-      }
     }
   }
 
