@@ -60,7 +60,7 @@ object Structs {
   /**
    * Generate Struct from flatten data.
    */
-  def generte(world: World, loc: Location, state: Map[(Int, Int, Int), (Material, Byte)]) {
+  def generate(world: World, loc: Location, state: Map[(Int, Int, Int), (Material, Byte)]) {
     for ((pos, blockdata) <- state) {
       val (x, y, z) = pos
       val (mat, data) = blockdata
