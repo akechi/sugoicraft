@@ -1,4 +1,4 @@
-# sugoicraft [![Build Status](https://travis-ci.org/akechi/sugoicraft.svg?branch=master)](https://travis-ci.org/akechi/sugoicraft)
+# sugoicraft [![Build Status](https://travis-ci.org/akechi/sugoicraft.svg?branch=master)](https://travis-ci.org/akechi/sugoicraft)[![Build Status](https://buildhive.cloudbees.com/job/akechi/job/sugoicraft/badge/icon)](https://buildhive.cloudbees.com/job/akechi/job/sugoicraft/)
 ## Compile
 
     $ sbt compile
